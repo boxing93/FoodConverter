@@ -1,0 +1,58 @@
+<main>
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-lg-12">
+                <th:block sec:authorize="isAuthenticated()">
+                    <h1 class="page-header">Hello, <span th:text="${user.fullName}"></span>
+                        <small>...now you can create your recipes</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a th:href="@{/}">Home</a>
+                        </li>
+                        <li class="active">
+                            <a th:href="@{/addRecipe}">Create Recipe</a>
+                        </li>
+                        <li class="active">
+                            <a th:href="@{/user/viewMyRecipes}">View My Recipes</a>
+                        </li>
+                        <li class="active">
+                            <a th:href="@{/changePasswordFromAccount}">Change Password</a>
+                        </li>
+                        <li class="active">
+                            <a th:href="@{/logout}">Logout</a>
+                        </li>
+                    </ol>
+                </th:block>
+            </div>
+            <div class="col-md-12">
+                <article>
+                    <header>
+                        <h2 th:text="${userRecipe.title}"></h2>
+                        <h4>Average price:</h4>
+                        <h4 th:text="${userRecipe.price}"></h4>
+                    </header>
+
+                    <p th:text="${userRecipe.summary}"></p>
+                    <p th:text="${userRecipe.product}"></p>
+                    <small class="author" th:text="${userRecipe.author.fullName}"></small>
+                    <small class="author">is the author on this recipe.</small>
+                    <small class="author" th:text="${userRecipe.date}"></small>
+                    <footer>
+
+                        <div class="pull-right">
+
+                            <th:block sec:authorize="isAuthenticated()"
+                                      th:if="${user.isAdmin() OR user.isAuthor(userRecipe)}">
+                                <a class="btn btn-success btn-xs"
+                                   th:href="@{/user/edit/{id}(id = ${userRecipe.id})}">Edit</a>
+                                <a class="btn btn-danger btn-xs" th:href="@{/user/delete/{id}(id = ${userRecipe.id})}">Delete</a>
+                            </th:block>
+                            <a class="btn btn-default btn-xs" sec:authorize="isAuthenticated()" th:href="@{/user/viewMyRecipes}">back &raquo;</a>
+                            <a class="btn btn-default btn-xs" sec:authorize="isAnonymous()" th:href="@{/recipes}">back &raquo;</a>
+                        </div>
+                    </footer>
+                </article>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,44 @@
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Hello, <span th:text="${user.fullName}"></span>
+                    <small>...now you can create your recipes</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a th:href="@{/}">Home</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/addRecipe}">Create Recipe</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/user/viewMyRecipes}">View My Recipes</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/changePasswordFromAccount}">Change password</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/logout}">Logout</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <h2>This is your recipes, now you can add,remove or edit.</h2>
+        <th:block sec:authorize="isAuthenticated()" th:if="${user.isAuthor(userRecipe)}" th:each="userRecipe : ${userRecipe}">
+            <div class="col-md-6">
+                <article>
+                    <header>
+                        <h2 th:text="${userRecipe.title}"></h2>
+                    </header>
+                    <p th:text="${userRecipe.summary}"></p>
+                    <small class="active" th:text="${userRecipe.author.fullName}"></small>
+                    <footer>
+                        <div class="pull-right">
+                            <a class="btn btn-default btn-xs" th:href="@{/recipe/{id} (id=${userRecipe.id})}">Read more &raquo;</a>
+                        </div>
+                    </footer>
+                </article>
+            </div>
+        </th:block>
+    </div>
+</main>

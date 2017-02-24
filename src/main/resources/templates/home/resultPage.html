@@ -1,0 +1,45 @@
+<main>
+    <div class="container body-content">
+        <div class="well text-center">
+            <div class="container form-horizontal">
+                <div class="row-row">
+                    <h2>Food Converter: Simple converter for your business.</h2>
+                    <p>A complete web application will help you!</p>
+                </div>
+            </div>
+            <div class="flex-content col-xs-12 text-center">
+                <form id="convertbar" th:action="@{/converter}" method="get" class="form-inline">
+                    <div class="row">
+                        <input type="text" id="weight" name="inputField" placeholder="Example: 300"
+                               class="form-control"/>
+                        <select id="e2" name="units" class="form-control">
+                            <option th:value="GRAM">Grams</option>
+                            <option th:value="KG">Kilograms</option>
+                            <option th:value="ML">Milliliters</option>
+                            <option th:value="LITER">Liters</option>
+                        </select>
+                        <span class="text-center">in</span>
+                        <select id="e2" name="units2" class="form-control">
+                            <option th:value="GRAM">Grams</option>
+                            <option th:value="KG">Kilograms</option>
+                            <option th:value="ML">Milliliters</option>
+                            <option th:value="LITER">Liters</option>
+                        </select>
+                        <button class="btn btn-primary" type="submit">Convert</button>
+                    </div>
+                    <div class="div-inline text-center col-xs-12 flex-content">
+                        <h3 class="div-inline text-center">You are enter:</h3>
+                        <h3 class="div-inline text-center" th:text="${result}"></h3>
+                            <h3 class="div-inline text-center" th:text="${unit1}"></h3>
+                            <h3 class="div-inline text-center">in</h3>
+                        <h3 class="div-inline text-center" th:text="${unit2}"></h3>
+                    </div>
+                    <div class="flex-content col-xs-12 text-center">
+                        <h3 class="div-inline">and your result is:</h3>
+                        <h3 class="div-inline" th:text="${field}"></h3>
+                    </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</main>

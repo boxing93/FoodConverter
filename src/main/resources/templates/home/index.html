@@ -1,0 +1,36 @@
+<main>
+    <div class="container body-content">
+    <div class="well text-center">
+            <div class="container form-horizontal">
+                <div class="row-row">
+                    <h2>Food Converter: Simple converter for your business.</h2>
+                    <p>A complete web application will help you!</p>
+                </div>
+            </div>
+        <div class="flex-content col-xs-12 text-center">
+            <form id="convertbar" th:action="@{/converter}" method="get" class="form-inline">
+                <div class="row">
+                    <div>
+                        <h3 th:text="${message2}"></h3>
+                    </div>
+                    <input type="text" id="weight" name="inputField" placeholder="Example: 300" class="form-control"/>
+                    <select id="e2" name="units" class="form-control">
+                        <option th:value="GRAM">Grams</option>
+                        <option th:value="KG">Kilograms</option>
+                        <option th:value="ML">Milliliters</option>
+                        <option th:value="LITER">Liters</option>
+                    </select>
+                    <span class="text-center">in</span>
+                    <select id="e2" name="units2" class="form-control">
+                        <option th:value="GRAM">Grams</option>
+                        <option th:value="KG">Kilograms</option>
+                        <option th:value="ML">Milliliters</option>
+                        <option th:value="LITER">Liters</option>
+                    </select>
+                    <button class="btn btn-primary" type="submit">Convert</button>
+                </div>
+            </form>
+    </div>
+    </div>
+    </div>
+</main>

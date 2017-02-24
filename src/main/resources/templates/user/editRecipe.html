@@ -1,0 +1,61 @@
+<main>
+    <div class="container body-content span=8 offset=2">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Hello, <span th:text="${user.fullName}"></span>
+                    <small>...now you can create your recipes</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a th:href="@{/}">Home</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/addRecipe}">Create Recipe</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/user/viewMyRecipes}">View My Recipes</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/changePasswordFromAccount}">Change Password</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/logout}">Logout</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <form class="form-horizontal" th:action="@{/user/edit/{id}(id=${userRecipe.id})}" method="POST">
+            <fieldset>
+                <legend class="text-center">Edit Post</legend>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="userRecipe_title">Post Title</label>
+                    <div class="col-sm-4 ">
+                        <input type="text" class="form-control" id="userRecipe_title" placeholder="Recipe Title"
+                               name="title" th:value="${userRecipe.title}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="userRecipe_price">Price</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="userRecipe_price" placeholder="Recipe Price"
+                               name="price" th:value="${userRecipe.price}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="userRecipe_summary">Summary</label>
+                    <div class="col-sm-6">
+                        <textarea class="form-control" rows="6" id="userRecipe_summary" name="summary"
+                                  th:field="${userRecipe.summary}"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <a class="btn btn-default" th:href="@{/user/viewMyRecipes}">Cancel</a>
+                        <input type="submit" class="btn btn-success" value="Edit"/>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</main>

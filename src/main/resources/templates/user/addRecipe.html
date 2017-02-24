@@ -1,0 +1,64 @@
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Hello, <span th:text="${user.fullName}"></span>
+                    <small>...now you can create your recipes</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a th:href="@{/}">Home</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/addRecipe}">Create Recipe</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/user/viewMyRecipes}">View My Recipes</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/changePasswordFromAccount}">Change password</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/logout}">Logout</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <form class="form-horizontal" th:action="@{/user/create}" method="post">
+            <fieldset>
+                <legend>Add your products and price for all of them!</legend>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="title">Title</label>
+                    <div class="col-sm-4 ">
+                        <input type="text" required="required" class="form-control" id="title" placeholder="Title" name="title"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="product">Product</label>
+                <div class="col-sm-4">
+                    <input type="text" required="required" class="form-control" id="product" name="product" placeholder="Product"/>
+                </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="price">Price</label>
+                    <div class="col-sm-4">
+                        <input type="number" required="required" step="0.01" class="form-control" id="price" name="price" placeholder="Price for product in kilos"/>
+                    </div>
+                    </div>
+                <div id="dynamicInput" class="form-group">
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="summary">Method of preparation</label>
+                    <div class="col-sm-6">
+                        <textarea class="form-control" required="required" rows="6" id="summary" name="summary" placeholder="Method of preparation"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-4">
+                <button type="submit" class="btn btn-primary">Create Recipe</button>
+                        <input type="button" class="btn btn-default" value="Add more products" onClick="addInput('dynamicInput');"/>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</main>

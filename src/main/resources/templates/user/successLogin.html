@@ -1,0 +1,27 @@
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Hello, <span th:text="${user.fullName}"></span>
+                    <small>...now you can create your recipes</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a th:href="@{/}">Home</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/addRecipe}">Create Recipe</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/user/viewMyRecipes}">View My Recipes</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/changePasswordFromAccount}">Change Password</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/logout}">Logout</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</main>
